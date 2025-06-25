@@ -2,6 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
+# 忽視文件夾
+log/
+resource/
 
 # C extensions
 *.so
