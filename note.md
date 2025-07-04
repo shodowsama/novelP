@@ -24,6 +24,9 @@ git pull --rebase novel main
 
 # 推送至遠端倉庫( 使用-u默認)
 git push -u novel main
+
+# 創建分支
+git switch -c backend
 ```
 
 ## 虛擬環境下pip install flask產生錯誤ModuleNotFoundError: No module named 'pip._internal'
