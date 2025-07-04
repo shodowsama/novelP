@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <link rel="stylesheet" href="../resource/css/header.css">
+
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <!-- 小螢幕圖示 -->
+                <input type="checkbox" id="nav_boxs">
+
+                <!-- 首頁與搜尋欄 -->
+                <div class="nav_logo_search">
+                    <div class="nav_log">
+                        <a href="home.html">logo</a>
+                    </div>
+                    <div class="nav_search">
+                        <button type="submit" class="nav_search_button" >      
+                            <!-- 搜尋圖示 -->
+                            <span class="material-symbols-outlined">search</span>
+                        </button>
+                        <input type="text" name="search_key" placeholder="Search...">
+                    </div>
+                </div>
+
+                <div class="nav_list">
+                    <ul>
+                        <li class="nav_list_link"><a href = "ranking.html"> 小說排行        </a></li>
+                        <li class="nav_list_link"><a href = # >         閱讀紀錄    </a></li>
+                        <li class="nav_list_link"><a href = # >         書架        </a></li>
+                        <li class="nav_list_link person_order"><a href = # >
+                            <span class="material-symbols-outlined person_icon">account_circle</span>
+                        </a></li>
+                    </ul>
+
+                </div>
+                
+                <!-- 小螢幕圖示(移動位置會造成css衝突) -->
+                <label for="nav_boxs" class="nav_check">
+                    <span class="material-symbols-outlined">menu</span>
+                </label>
+
+            </nav>
+        </header>
+
+        <!-- 替換部分 -->
+        <div class="main_area">
+            <div class="main_contain">
+
+                <p> {% block content %} {% endblock %} </p>
+            </div>
+        </div>
+
+        <!-- 替換部分 -->
+
+        <footer>
+            <p>LBJ製作</p>
+        </footer>
+    </body>
+</html>

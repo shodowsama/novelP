@@ -9,6 +9,8 @@ def create_app():
 
     from  controller.user import user
     app.register_blueprint(user)  
+    from  controller.index import index
+    app.register_blueprint(index) 
 
 
     return app
