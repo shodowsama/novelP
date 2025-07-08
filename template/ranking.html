@@ -1,95 +1,79 @@
-
-
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-        <link rel="stylesheet" href="../resource/css/ranking.css">
-
-
 {% extends 'header.html' %}
+        
+{% block css_file %}
+    <link rel="stylesheet" href="/css/ranking.css">  
+{% endblock %}
 
 {% block title %} 小說排行 {% endblock %}
 
 {% block content %}
-<div class="main_area">
-    <div class="main_contain">
-
-        <!-- 選擇目錄 -->
-        <div class="ranking_type">
-            <!-- 上排 -->
-            <div>
-                <ul>
-                    <li><a href="#">不限</a></li>
-                    <li><a href="#">連載</a></li>
-                    <li><a href="#">完本</a></li>
-                </ul>
-                <ul>
-                    <li><a href="#">人氣</a></li>
-                    <li><a href="#">推薦</a></li>
-                    <li><a href="#">新書</a></li>
-                </ul>
-            </div>
-            <!-- 下排 -->
-            <div>
-                <ul>
-                    <li><a href="#">全部</a></li>
-                    <li><a href="#">玄幻魔法</a></li>
-                    <li><a href="#">修真武俠</a></li>
-                    <li><a href="#">言情小說</a></li>
-                    <li><a href="#">歷史軍事</a></li>
-                    <li><a href="#">同人小說</a></li>
-                </ul>
-            </div>
-        </div>
-
-
-
-
-        <!-- 小說box -->
-        <div class="ranking_box">
-            <div class="ranking_box_inner">
-                <h3><a href="#">小說名稱</a></h3>
-                <div>
-                    <p><a href="#">作者名稱</a></p>
-                    <p>連載中</p>
-                </div>
-                <div>
-                    <p>這是小說的簡介，這裡會顯示小說的簡介內容，讓讀者可以快速了解小說的主題和內容。
-                        這是小說的簡介，這裡會顯示小說的簡介內容，讓讀者可以快速了解小說的主題和內容。
-                        這是小說的簡介，這裡會顯示小說的簡介內容，讓讀者可以快速了解小說的主題和內容。
-                        這是小說的簡介，這裡會顯示小說的簡介內容，讓讀者可以快速了解小說的主題和內容。
-                        這是小說的簡介，這裡會顯示小說的簡介內容，讓讀者可以快速了解小說的主題和內容。
-                        這是小說的簡介，這裡會顯示小說的簡介內容，讓讀者可以快速了解小說的主題和內容。
-                        這是小說的簡介，這裡會顯示小說的簡介內容，讓讀者可以快速了解小說的主題和內容。
-                        這是小說的簡介，這裡會顯示小說的簡介內容，讓讀者可以快速了解小說的主題和內容。
-
-                    </p>
-                </div>
-            </div>
-
-            <div class="ranking_box_inner">
-                <h3><a href="#">小說名稱</a></h3>
-                <div>
-                    <p><a href="#">作者名稱</a></p>
-                    <p>連載中</p>
-                </div>
-                <div class="novel_Introduction">
-                    <p>這是小說的簡介，這裡會顯示小說的簡介內容，讓讀者可以快速了解小說的主題和內容。</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="ranking_pages">
+<div class="main_contain">
+    <!-- 選擇目錄 -->
+    <div class="ranking_type">
+        <!-- 上排 -->
+        <div>
             <ul>
-                <li><a href="#">上一頁</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">下一頁</a></li>
+                <li><a href="?ranking_status=1&ranking_type={{reply_type}}">不限</a></li>
+                <li><a href="?ranking_status=2&ranking_type={{reply_type}}">連載</a></li>
+                <li><a href="?ranking_status=3&ranking_type={{reply_type}}">完本</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">人氣</a></li>
+                <li><a href="#">推薦</a></li>
+                <li><a href="#">新書</a></li>
+            </ul>
+        </div>
+        <!-- 下排 -->
+        <div>
+            <ul>
+                <li><a href="?ranking_type=1&ranking_status={{reply_status}}">全部</a></li>
+                <li><a href="?ranking_type=2&ranking_status={{reply_status}}">官场职场</a></li>
+                <li><a href="?ranking_type=3&ranking_status={{reply_status}}">玄幻魔法</a></li>
+                <li><a href="?ranking_type=4&ranking_status={{reply_status}}">都市小说</a></li>
+                <li><a href="?ranking_type=5&ranking_status={{reply_status}}">修真武侠</a></li>
+                <li><a href="?ranking_type=6&ranking_status={{reply_status}}">言情小说</a></li>
+                <li><a href="?ranking_type=7&ranking_status={{reply_status}}">科幻空间</a></li>
             </ul>
         </div>
     </div>
-</div>
 
+
+    <!-- 小說box -->
+    <div class="ranking_box">
+        {% for ranking in result %}
+        <div class="ranking_box_inner">
+            <h3><a href="#">{{ranking.book_name}}</a></h3>
+            <div>
+                <p><a href="">{{ranking.book_autor|striptags}}</a></p>
+                <p>{{ranking.book_status|striptags}}</p>
+            </div>
+            <div class="box_contain">
+                <p>{{ranking.book_abstract}} </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="ranking_pages">
+
+            {% if 2 > page|int %}
+            <ul>
+                <li><a href="?page={{page}}">{{page}}</a></li>
+                <li><a href="?page={{page|int +1}}">{{page|int +1}}</a></li>
+                <li><a href="?page={{page|int +2}}">{{page|int +2}}</a></li>
+                <li><a href="?page={{page|int +1 }}">下一頁</a></li>
+            </ul>
+
+            {% else %}
+            <ul>
+                <li><a href="?page={{page|int -1}}">上一頁</a></li>
+                <li><a href="?page={{page|int -1}}">{{page|int -1}}</a></li>
+                <li><a href="?page={{page}}">{{page}}</a></li>
+                <li><a href="?page={{page|int +1}}">{{page|int +1}}</a></li>
+                <li><a href="?page={{page|int +1 }}">下一頁</a></li>
+            </ul>
+            {% endif %}
+    </div>
+</div>
 
 {% endblock %}

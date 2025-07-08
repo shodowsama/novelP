@@ -5,7 +5,8 @@
         <title>{% block title %}{% endblock %}</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-        <link rel="stylesheet" href="../resource/css/header.css">
+        <link rel="stylesheet" href="/css/header.css">
+        {% block css_file %}{% endblock %}
 
     </head>
     <body>
@@ -50,10 +51,9 @@
 
         <!-- 替換部分 -->
         <div class="main_area">
-            <div class="main_contain">
 
-                <p> {% block content %} {% endblock %} </p>
-            </div>
+            {% block content %} {% endblock %}
+
         </div>
 
         <!-- 替換部分 -->

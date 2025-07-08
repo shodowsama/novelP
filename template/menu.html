@@ -1,65 +1,54 @@
-       <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-        <link rel="stylesheet" href="../resource/css/menu.css">
-
-
 {% extends 'header.html' %}
+
+{% block css_file %}
+    <link rel="stylesheet" href="/css/menu.css">  
+{% endblock %}
 
 {% block title %} 小說排行 {% endblock %}
 
 {% block content %}
-<div class="main_area">
-    <div class="main_contain">
 
-        <div class="menu_type">
-            <p>
-                <a href="home.html">首頁</a>
-                <span class="material-symbols-outlined">chevron_right</span>
-                <a href="#">都市小說</a>
-                <span class="material-symbols-outlined">chevron_right</span>
-                <a href="#">小說名稱</a>
-            </p>
-        </div>
+<div class="main_contain">
 
-        <div class="menu_list_outside">
-            <div class="menu_list">
-                <a href="#">
-                    <span>第一章</span>
-                </a>
-                <a href="#">
-                    <span>第二章</span>
-                </a>
-                <a href="#">
-                    <span>第三章</span>
-                </a>
-                <a href="#">
-                    <span>第四章</span>
-                </a>
-                <a href="#">
-                    <span>第五章</span>
-                </a>
-                <a href="#">
-                    <span>第六章</span>
-                </a>
-                <a href="#">
-                    <span>第七章</span>
-                </a>
-                <a href="#">
-                    <span>第八章</span>
-                </a>
-            </div>
-        </div>
-
+    <div class="menu_type">
+        <p>
+            <a href="home.html">首頁</a>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <a href="#">都市小說</a>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <a href="#">小說名稱</a>
+        </p>
     </div>
-</div>   
 
+    <div class="menu_list_outside">
+        <div class="menu_list">
+            <a href="#">
+                <span>第一章</span>
+            </a>
+            <a href="#">
+                <span>第二章</span>
+            </a>
+            <a href="#">
+                <span>第三章</span>
+            </a>
+            <a href="#">
+                <span>第四章</span>
+            </a>
+            <a href="#">
+                <span>第五章</span>
+            </a>
+            <a href="#">
+                <span>第六章</span>
+            </a>
+            <a href="#">
+                <span>第七章</span>
+            </a>
+            <a href="#">
+                <span>第八章</span>
+            </a>
+        </div>
+    </div>
 
-
-
-
-
-
-
-
-
+</div>
 
 {% endblock %}

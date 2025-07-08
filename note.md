@@ -27,6 +27,12 @@ git push -u novel main
 
 # 創建分支
 git switch -c backend
+
+# 切換分支
+git switch backend
+
+# 推送分支
+git push novel backend
 ```
 
 ## 虛擬環境下pip install flask產生錯誤ModuleNotFoundError: No module named 'pip._internal'
