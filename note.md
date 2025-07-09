@@ -42,3 +42,10 @@ python -m ensurepip
 python -m pip install --upgrade pip
 pip install flask
 ```
+
+## 將資料庫中的url進行拆分以作為小說ID
+
+```sql
+alter table novels add book_id varchar(256);
+update novels set book_id = substring_index(substring_index(book_menu_url,'book/',-1),'/',1);
+```

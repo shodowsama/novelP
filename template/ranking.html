@@ -13,9 +13,9 @@
         <!-- 上排 -->
         <div>
             <ul>
-                <li><a href="?ranking_status=1&ranking_type={{reply_type}}">不限</a></li>
-                <li><a href="?ranking_status=2&ranking_type={{reply_type}}">連載</a></li>
-                <li><a href="?ranking_status=3&ranking_type={{reply_type}}">完本</a></li>
+                {% for k,v in book_status_map.items() %}
+                <li><a href="?ranking_status={{k}}&ranking_type={{reply_type}}">{{v}}</a></li>
+                {% endfor %}
             </ul>
             <ul>
                 <li><a href="#">人氣</a></li>
@@ -26,13 +26,9 @@
         <!-- 下排 -->
         <div>
             <ul>
-                <li><a href="?ranking_type=1&ranking_status={{reply_status}}">全部</a></li>
-                <li><a href="?ranking_type=2&ranking_status={{reply_status}}">官场职场</a></li>
-                <li><a href="?ranking_type=3&ranking_status={{reply_status}}">玄幻魔法</a></li>
-                <li><a href="?ranking_type=4&ranking_status={{reply_status}}">都市小说</a></li>
-                <li><a href="?ranking_type=5&ranking_status={{reply_status}}">修真武侠</a></li>
-                <li><a href="?ranking_type=6&ranking_status={{reply_status}}">言情小说</a></li>
-                <li><a href="?ranking_type=7&ranking_status={{reply_status}}">科幻空间</a></li>
+                {% for k,v in book_type_map.items() %}
+                <li><a href="?ranking_type={{k}}&ranking_status={{reply_status}}">{{v}}</a></li>
+                {% endfor %}
             </ul>
         </div>
     </div>
@@ -42,9 +38,9 @@
     <div class="ranking_box">
         {% for ranking in result %}
         <div class="ranking_box_inner">
-            <h3><a href="#">{{ranking.book_name}}</a></h3>
+            <h3><a href="/detail?book_id={{ranking.book_id}}">{{ranking.book_name}}</a></h3>
             <div>
-                <p><a href="">{{ranking.book_autor|striptags}}</a></p>
+                <p><a href="#">{{ranking.book_autor|striptags}}</a></p>
                 <p>{{ranking.book_status|striptags}}</p>
             </div>
             <div class="box_contain">
@@ -58,19 +54,19 @@
 
             {% if 2 > page|int %}
             <ul>
-                <li><a href="?page={{page}}">{{page}}</a></li>
-                <li><a href="?page={{page|int +1}}">{{page|int +1}}</a></li>
-                <li><a href="?page={{page|int +2}}">{{page|int +2}}</a></li>
-                <li><a href="?page={{page|int +1 }}">下一頁</a></li>
+                <li><a href="?page={{page}}&ranking_type={{reply_type}}&ranking_status={{reply_status}}">{{page}}</a></li>
+                <li><a href="?page={{page|int +1}}&ranking_type={{reply_type}}&ranking_status={{reply_status}}">{{page|int +1}}</a></li>
+                <li><a href="?page={{page|int +2}}&ranking_type={{reply_type}}&ranking_status={{reply_status}}">{{page|int +2}}</a></li>
+                <li><a href="?page={{page|int +1 }}&ranking_type={{reply_type}}&ranking_status={{reply_status}}">下一頁</a></li>
             </ul>
 
             {% else %}
             <ul>
-                <li><a href="?page={{page|int -1}}">上一頁</a></li>
-                <li><a href="?page={{page|int -1}}">{{page|int -1}}</a></li>
-                <li><a href="?page={{page}}">{{page}}</a></li>
-                <li><a href="?page={{page|int +1}}">{{page|int +1}}</a></li>
-                <li><a href="?page={{page|int +1 }}">下一頁</a></li>
+                <li><a href="?page={{page|int -1}}&ranking_type={{reply_type}}&ranking_status={{reply_status}}">上一頁</a></li>
+                <li><a href="?page={{page|int -1}}&ranking_type={{reply_type}}&ranking_status={{reply_status}}">{{page|int -1}}</a></li>
+                <li><a href="?page={{page}}&ranking_type={{reply_type}}&ranking_status={{reply_status}}">{{page}}</a></li>
+                <li><a href="?page={{page|int +1}}&ranking_type={{reply_type}}&ranking_status={{reply_status}}">{{page|int +1}}</a></li>
+                <li><a href="?page={{page|int +1 }}&ranking_type={{reply_type}}&ranking_status={{reply_status}}">下一頁</a></li>
             </ul>
             {% endif %}
     </div>

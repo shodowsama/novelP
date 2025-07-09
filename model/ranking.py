@@ -35,25 +35,25 @@ class Ranking(base):
                 Ranking.book_status == status_name,                
             ).order_by(
                 Ranking.id.desc()
-            ).offset(per_count).limit(count).all()
+            ).offset(per_count).limit(config[env].page_count).all()
 
         elif int(ranking_status) != 1:
             result = dbsession.query(Ranking).filter(
                 Ranking.book_status == status_name,                
             ).order_by(
                 Ranking.id.desc()
-            ).offset(per_count).limit(count).all()   
+            ).offset(per_count).limit(config[env].page_count).all()   
 
         elif int(ranking_type) != 1:
             result = dbsession.query(Ranking).filter(
                 Ranking.book_type == type_name,               
             ).order_by(
                 Ranking.id.desc()
-            ).offset(per_count).limit(count).all()  
+            ).offset(per_count).limit(config[env].page_count).all()  
 
         else:
             result = dbsession.query(Ranking).order_by(
                 Ranking.id.desc()
-            ).offset(per_count).limit(count).all()    
+            ).offset(per_count).limit(config[env].page_count).all()    
 
         return result

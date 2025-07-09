@@ -13,18 +13,18 @@
         <!-- 選擇目錄 -->
         <div class="detail_novel">
             <h4>
-                <a href="home.html">首頁</a>
+                <a href="/">首頁</a>
                 <span class="material-symbols-outlined">chevron_right</span>
-                <a href="#">都市小說</a>
+                <a href="/ranking?ranking_type={{typeID}}&ranking_status=1">{{resultD.book_type}}</a>
                 <span class="material-symbols-outlined">chevron_right</span>
-                <a href="#">小說名稱</a>
+                <a href="#">{{resultD.book_name}}</a>
                 <span class="material-symbols-outlined">chevron_right</span>
             </h4>
 
-            <h3>  小說名稱  </h3>
-            <p> 作者</p>                
-            <p> 分類</p>
-            <p> 連載</p>
+            <h3>  {{resultD.book_name}}  </h3>
+            <p> {{resultD.book_autor}}</p>                
+            <p> {{resultD.book_type}}</p>
+            <p> {{resultD.book_status}}</p>
             <p> 更新:</p>
 
             <div class="addbutton">
@@ -36,28 +36,14 @@
         <!-- 小說box -->
         <div class="detail_menu">
             <h3>目錄</h3>
-            <a href="#">
-                <span>第一章</span>
-                <span>更新時間</span>
-            </a>
-            <a href="#">
-                <span>第二章</span>
-                <span>更新時間</span>
-            </a>
-            <a href="#">
-                <span>第三章</span>
-                <span>更新時間</span>
-            </a>
-            <a href="#">
-                <span>第四章</span>
-                <span>更新時間</span>
-            </a>
-            <a href="#">
-                <span>第五章</span>
-                <span>更新時間</span>
-            </a>
+            {% for name in resultM %}
+                <a href="#">
+                    <span>{{name.book_content_title}}</span>
+                    <span>更新時間</span>
+                </a>
+            {% endfor %}
             <div class="addbutton">
-                <a href="#">完整目錄</a>
+                <a href="/menu?book_id={{resultD.book_id}}">完整目錄</a>
             </div>
         </div>
     </div>  

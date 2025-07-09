@@ -7,10 +7,16 @@ def create_app():
                 static_folder='../resource' # 靜態文件夾
                 )
 
-    from  controller.user import user
-    app.register_blueprint(user)  
+    from  controller.home import homeP
+    app.register_blueprint(homeP)  
     from  controller.ranking import rank
     app.register_blueprint(rank) 
+    from  controller.header import Nheader
+    app.register_blueprint(Nheader) 
+    from controller.detail import detail
+    app.register_blueprint(detail)   
+    from controller.menu import Menu
+    app.register_blueprint(Menu)    
 
 
     return app

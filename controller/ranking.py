@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template,request
 from model.ranking import Ranking
+from app.config.config import config
+from app.setting import env
 import logging
 
 rank = Blueprint('ranking', __name__)
@@ -34,11 +36,9 @@ def ranking():
     # 查詢數據
     db_result = Ranking().find_novels(page, ranking_status ,ranking_type)
 
-    if len(db_result) == 0 :
-        page= int(page)-1
-        db_result = Ranking().find_novels(page, ranking_status ,ranking_type)
-
     return render_template('ranking.html',
+                           book_status_map = config[env].book_status_map,
+                           book_type_map = config[env].book_type_map,  
                            result = db_result,
                            reply_type = ranking_type,
                            reply_status=ranking_status,
