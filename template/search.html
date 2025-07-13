@@ -1,68 +1,40 @@
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-        <link rel="stylesheet" href="../resource/css/search.css">
-
-
 {% extends 'header.html' %}
 
-{% block title %} 小說排行 {% endblock %}
+{% block css_file %}
+    <link rel="stylesheet" href="/css/search.css">  
+{% endblock %}
+
+{% block title %} 小說搜索 {% endblock %}
 
 {% block content %}
-<div class="main_area">
-    <div class="main_contain">
 
-        <!-- 選擇目錄 -->
-        <div class="search_keyword">
-            <p> 搜索關鍵詞__</p>
-        </div>
-        <hr>
+<div class="main_contain">
 
-        <!-- 小說box -->
-        <div class="search_novel_box">
-            <ul>
-                <li>
-                    <div>
-                        <h3>小說名稱</h3>
-                        <div class="novel_type">
-                            <p>作者：某某人</p>
-                            <p>類型：奇幻</p>
-                        </div>
-
-                        <div class="novel_info">
-                            <p>簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                                簡介：這是一部精彩的小說，講述了一個關於冒險和友情的故事。
-                            </p>
-                        </div>
-                    </div> 
-            </ul>
-        </div>
-
-
-        <div class="ranking_pages">
-            <ul>
-                <li><a href="#">上一頁</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">下一頁</a></li>
-            </ul>
-        </div>
+    <!-- 選擇目錄 -->
+    <div class="search_keyword">
+        <p> 搜索關鍵詞__{{keyward}}</p>
     </div>
-</div>
+    <hr>
 
+    <!-- 小說box -->
+    {% for search in result %}
+    <div class="search_novel_box">
+        <ul>
+            <li>
+                <div>
+                    <h3><a href="/detail?book_id={{search.book_id}}">{{search.book_name}}</a></h3>
+                    <div class="novel_type">
+                        <p>作者：{{search.book_autor}}</p>
+                        <p>類型：{{search.book_status}}</p>
+                    </div>
+
+                    <div class="novel_info">
+                        <p>{{search.book_abstract}}</p>
+                    </div>
+                </div> 
+        </ul>
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock %}

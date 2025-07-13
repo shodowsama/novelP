@@ -1,138 +1,118 @@
-       <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-        <link rel="stylesheet" href="../resource/css/detail.css">
-
-
 {% extends 'header.html' %}
 
-{% block title %} 小說排行 {% endblock %}
+{% block css_file %}
+    <link rel="stylesheet" href="/css/detail.css">  
+{% endblock %}
+
+{% block title %} 小說詳情 {% endblock %}
 
 {% block content %}
-<div class="main_area">
-    <div class="main_contain">
+<div class="main_contain">
 
-        <div class="detail_left">
-            <!-- 選擇目錄 -->
-            <div class="detail_novel">
-                <h4>
-                    <a href="home.html">首頁</a>
-                    <span class="material-symbols-outlined">chevron_right</span>
-                    <a href="#">都市小說</a>
-                    <span class="material-symbols-outlined">chevron_right</span>
-                    <a href="#">小說名稱</a>
-                    <span class="material-symbols-outlined">chevron_right</span>
-                </h4>
+    <div class="detail_left">
+        <!-- 選擇目錄 -->
+        <div class="detail_novel">
+            <h4>
+                <a href="/">首頁</a>
+                <span class="material-symbols-outlined">chevron_right</span>
+                <a href="/ranking?ranking_type={{typeID}}&ranking_status=1">{{resultD.book_type}}</a>
+                <span class="material-symbols-outlined">chevron_right</span>
+                <a href="#">{{resultD.book_name}}</a>
+                <span class="material-symbols-outlined">chevron_right</span>
+            </h4>
 
-                <h3>  小說名稱  </h3>
-                <p> 作者</p>                
-                <p> 分類</p>
-                <p> 連載</p>
-                <p> 更新:</p>
+            <h3>  {{resultD.book_name}}  </h3>
+            <p> {{resultD.book_autor}}</p>                
+            <p> {{resultD.book_type}}</p>
+            <p> {{resultD.book_status}}</p>
+            <p> 更新:</p>
 
-                <div class="addbutton">
-                    <a href="#">開始閱讀</a>
-                    <a href="#">加入書架</a>
-                </div>
-
-            </div>
-
-            <!-- 小說box -->
-            <div class="detail_menu">
-                <h3>目錄</h3>
-                <a href="#">
-                    <span>第一章</span>
-                    <span>更新時間</span>
-                </a>
-                <a href="#">
-                    <span>第二章</span>
-                    <span>更新時間</span>
-                </a>
-                <a href="#">
-                    <span>第三章</span>
-                    <span>更新時間</span>
-                </a>
-                <a href="#">
-                    <span>第四章</span>
-                    <span>更新時間</span>
-                </a>
-                <a href="#">
-                    <span>第五章</span>
-                    <span>更新時間</span>
-                </a>
-                <div class="addbutton">
-                    <a href="#">完整目錄</a>
-                </div>
-            </div>
-        </div>  
-
-        <div class="detail_hot">
-            <input type="radio" name="radio_one" id='ranking1' class="ranking_control" checked>
-            <input type="radio" name="radio_one" id='ranking2' class="ranking_control">
-
-            <div class="tag_group">
-                <label for="ranking1">發燒</label>
-                <label for="ranking2">連載</label>
-            </div>
-            <div class="content_group">
-                <div class="content content1">
-                    <a href="#">
-                        <span>熱門小說1</span>
-                    </a>
-                    <a href="#">
-                        <span>熱門小說2</span>
-                    </a>
-                    <a href="#">
-                        <span>熱門小說3</span>
-                    </a>
-                    <a href="#">
-                        <span>熱門小說4</span>
-                    </a>
-
-                </div>
-                <div class="content content2">
-                    <a href="#">
-                        <span>連載小說1</span>
-                    </a>
-                    <a href="#">
-                        <span>連載小說2</span>
-                    </a>
-                    <a href="#">
-                        <span>連載小說3</span>
-                    </a>
-                    <a href="#">
-                        <span>連載小說4</span>
-                    </a>
-
-                </div>
+            <div class="addbutton">
+                <a href="#">開始閱讀</a>
+                <a href="#">加入書架</a>
             </div>
         </div>
 
-        <div class="detail_message">
-            <h3> 留言區</h3>
-            <hr>
-            <div class="user_comment">
-                <div class="head_img">
-                    <span>頭像</span>
-                </div>
-                <div class="comment">
-                    <p>username</p>
-                    <p>你好</p>
-                    <div class="re_comment">
-                        <input type="button" value="回覆">
-                    </div>
-                </div>
+        <!-- 小說box -->
+        <div class="detail_menu">
+            <h3>目錄</h3>
+            {% for name in resultM %}
+                <a href="#">
+                    <span>{{name.book_content_title}}</span>
+                    <span>更新時間</span>
+                </a>
+            {% endfor %}
+            <div class="addbutton">
+                <a href="/menu?book_id={{resultD.book_id}}">完整目錄</a>
+            </div>
+        </div>
+    </div>  
+
+    <div class="detail_hot">
+        <input type="radio" name="radio_one" id='ranking1' class="ranking_control" checked>
+        <input type="radio" name="radio_one" id='ranking2' class="ranking_control">
+
+        <div class="tag_group">
+            <label for="ranking1">發燒</label>
+            <label for="ranking2">連載</label>
+        </div>
+        <div class="content_group">
+            <div class="content content1">
+                <a href="#">
+                    <span>熱門小說1</span>
+                </a>
+                <a href="#">
+                    <span>熱門小說2</span>
+                </a>
+                <a href="#">
+                    <span>熱門小說3</span>
+                </a>
+                <a href="#">
+                    <span>熱門小說4</span>
+                </a>
 
             </div>
-
-            <div class="user_comment">
-                <div class="head_img">
-                    <span>頭像</span>
-                </div>
-                <input type="text">
+            <div class="content content2">
+                <a href="#">
+                    <span>連載小說1</span>
+                </a>
+                <a href="#">
+                    <span>連載小說2</span>
+                </a>
+                <a href="#">
+                    <span>連載小說3</span>
+                </a>
+                <a href="#">
+                    <span>連載小說4</span>
+                </a>
             </div>
-
         </div>
     </div>
-</div>
 
+    <div class="detail_message">
+        <h3> 留言區</h3>
+        <hr>
+        <div class="user_comment">
+            <div class="head_img">
+                <span>頭像</span>
+            </div>
+            <div class="comment">
+                <p>username</p>
+                <p>你好</p>
+                <div class="re_comment">
+                    <input type="button" value="回覆">
+                </div>
+            </div>
+        </div>
+
+        <div class="user_comment">
+            <div class="head_img">
+                <span>頭像</span>
+            </div>
+            <input type="text">
+        </div>
+
+    </div>
+</div>
 
 {% endblock %}
