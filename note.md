@@ -33,6 +33,11 @@ git switch backend
 
 # 推送分支
 git push novel backend
+
+# github合併後本地操作(刪除分支)
+git switch main
+git pull
+git branch -d backend
 ```
 
 ## 虛擬環境下pip install flask產生錯誤ModuleNotFoundError: No module named 'pip._internal'
