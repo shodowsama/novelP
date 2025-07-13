@@ -1,0 +1,23 @@
+導覽頁
+---
+tags:
+  - 小說網站導覽列
+parameters:
+  - name: search_key
+    in: query
+    description: 搜尋關鍵字
+    required: false
+    type: string
+responses:
+  200:
+    description: 返回搜尋結果
+    schema:
+      properties:
+        keyward: 
+          type: string
+          description: 搜尋關鍵字
+        result:
+          type: object
+          description: 搜尋小說結果
+  500:
+    description: 伺服器未開啟

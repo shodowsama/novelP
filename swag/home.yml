@@ -1,0 +1,11 @@
+tags:
+- 小說入口網站
+responses:
+  200:
+    description: 運行成功
+  500:
+    description: 伺服器未開啟
+
+
+
+

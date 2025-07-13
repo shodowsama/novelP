@@ -1,0 +1,25 @@
+小說詳情頁
+---
+tags:
+  - 小說詳情
+parameters:
+  - name: book_id
+    in: query
+    description: 小說id
+    type: string
+responses:
+  200:
+    description: 返回搜尋結果
+    schema:
+      properties:
+        resultD: 
+          type: string
+          description: 小說詳情資料庫
+        resultM: 
+          type: string
+          description: 小說目錄資料庫
+        typeID: 
+          type: string
+          description: 當前小說類型
+  500:
+    description: 伺服器未開啟

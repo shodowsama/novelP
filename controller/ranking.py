@@ -3,10 +3,12 @@ from model.ranking import Ranking
 from app.config.config import config
 from app.setting import env
 import logging
+from flasgger import swag_from
 
 rank = Blueprint('ranking', __name__)
 
 @rank.route('/ranking')
+@swag_from('../swag/ranking.yml')
 def ranking():
     page = request.args.get('page')
 

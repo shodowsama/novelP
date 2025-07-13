@@ -1,0 +1,20 @@
+當前小說目錄
+---
+tags:
+  - 當前小說目錄
+parameters:
+  - name: book_id
+    in: query
+    description: 小說ID
+    required: True
+    type: string
+responses:
+  200:
+    description: 返回小說目錄條目
+    schema:
+      properties:
+        resultM: 
+          type: string
+          description: 搜尋關鍵字
+  500:
+    description: 伺服器未開啟

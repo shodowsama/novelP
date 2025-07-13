@@ -49,3 +49,31 @@ pip install flask
 alter table novels add book_id varchar(256);
 update novels set book_id = substring_index(substring_index(book_menu_url,'book/',-1),'/',1);
 ```
+
+## 依賴安裝
+
+1. requirements
+
+```bash
+# 寫入
+pip freeze > requirements.txt
+# 安裝
+pip install -r requirements.txt
+```
+
+2. toml (pip只會刪除直接依賴，間接依賴無法刪除)
+手動新增檔案pyproject.toml，手動寫入。
+
+```bash
+# 安裝
+pip install -e .
+```
+
+3. 使用uv安裝依賴和搭建虛擬環境(poetry也可)
+
+```bash
+# 創建
+uv add flask
+# 安裝
+vu sync
+```
