@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template,request
+from flask import Blueprint, render_template,request,session
 from model.ranking import Ranking
+from model.favorite import favorite
 from app.config.config import config
 from app.setting import env
 import logging
@@ -45,3 +46,24 @@ def ranking():
                            reply_type = ranking_type,
                            reply_status=ranking_status,
                            page = page)
+
+
+
+@rank.route('/bookshelf')
+# @swag_from('../swag/bookshelf.yml')
+def bookshelf():
+    if not session.get('is_login'):    
+        return render_template('login.html')
+    else:
+        nickname = session.get('user_nickname')
+        db_results = []
+        db_result = favorite().find_favorite_by_nickname(nickname)
+        if not db_result:
+            db_result = [] 
+        else:
+            for i_data in db_result:
+                db_results.append(i_data[1])
+
+        return render_template('search.html',
+                           result = db_results,
+                           keyward = nickname)

@@ -1,0 +1,57 @@
+
+.main_contain {
+    min-height: 950px;
+    width: 90%;
+    max-width: 1200px;
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* 搜尋欄 */
+.home_log a{
+    margin: 2rem 1rem;
+    text-decoration:none;
+    font-size: 15rem;
+    color: var(--main-font-color);
+    background: white;
+}
+
+.home_search {
+    margin: 2rem 1rem;
+    padding: 5px 10px;
+    border: 0.1rem solid #2c2c89;
+    border-radius: 1rem;
+    display: flex;
+    background: #f5eeee;
+}
+
+.home_search input[type = text] {
+    border: none;
+    /* 背景透明 */
+    background: transparent;
+    outline: none;
+    margin: 1rem 2rem;
+    font-size: 2rem;
+}
+
+.home_search_button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.home_search_button span {
+    display: flex;
+    font-size: 3rem;
+}
+
+.nav_logo_search form,
+.nav_logo_search div{
+    display: none;
+}

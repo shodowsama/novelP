@@ -1,0 +1,106 @@
+{% extends 'header.html' %}
+
+{% block css_file %}
+    <link rel="stylesheet" href="/css/login.css">  
+    <script type="text/javascript" src="/js/login.js" defer> </script>
+{% endblock %}
+
+{% block title %} 首頁 {% endblock %}
+
+{% block content %}
+<div class="main_contain">
+    <div class="inside_box">
+        <input type="radio" name="enter" id="door1" class="enter_control" checked>
+        <input type="radio" name="enter" id="door2" class="enter_control">
+
+        <div class="tag_group">
+            <label for="door1">登入</label>
+            <label for="door2">註冊</label>
+        </div>
+
+        <div class="loggin_group">
+            {% if message_error %}
+                <div id="error-message">{{message_error}}</div>
+            {% else %}
+                <p id="error-message"></p>
+            {% endif %}
+            
+            <div class="content content1">                
+                <!-- 登入頁 -->
+                <form action="/login" method="post" id="formsent1">
+                    <div>
+                        <label for="email-input-login">
+                            <span>@</span>
+                        </label>
+                        <input type="email" class="email" id="email-input-login" name="email-input-login" placeholder="用戶信箱">
+                    </div>
+                    <div>
+                        <label for="password-input-login">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+                                <path
+                                    d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z" />
+                            </svg>
+                        </label>
+                        <input type="password" class="password" id="password-input-login" name="password-input-login" placeholder="用戶密碼">
+                    </div>
+                    <div>
+                        <label for="verify-input-login">
+                            <span>#</span>
+                        </label>
+                        <img src="/vcode" alt="">
+                        <input type="text" class="verify" id="verify-input-login" name="verify-input-login" placeholder="驗證碼">
+                    </div>
+
+                    <button type="submit" >登入</button>
+                </form>
+
+            </div>
+            <div class="content content2">
+                <!-- 註冊頁 -->
+                <form action="/login" method="post" id="formsent2">
+                    <div>
+                        <label for="nickname">
+                            <span>@</span>
+                        </label>
+                        <input type="text" class="nickname" name="nickname"  id="nickname" placeholder="用戶名稱">
+                    </div>
+                    <div>
+                        <label for="email-input">
+                            <span>@</span>
+                        </label>
+                        <input type="email" class="email" name="email-input"  id="email-input" placeholder="用戶信箱">
+                    </div>
+                    <div>
+                        <label for="password-input">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+                                <path
+                                    d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z" />
+                            </svg>
+                        </label>
+                        <input type="password" class="password" name="password-input" id="password-input" placeholder="用戶密碼">
+                    </div>
+                    <div>
+                        <label for="repeat-password-input">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+                                <path
+                                    d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z" />
+                            </svg>
+                        </label>
+                        <input type="password" class="password" id="repeat-password-input" placeholder="確認用戶密碼">
+                    </div>
+                    <div>
+                        <label for="verify-input">
+                            <span>#</span>
+                        </label>
+                        <img src="/vcode" alt="">
+                        <input type="text" class="verify" id="verify-input" name="verify-input" placeholder="驗證碼">
+                    </div>
+
+                    <button type="submit" >註冊</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

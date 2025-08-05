@@ -1,5 +1,6 @@
 from flask import Flask
 from flasgger import Swagger
+import os
 
 def create_app():
     app = Flask(__name__,
@@ -19,5 +20,9 @@ def create_app():
     app.register_blueprint(detail)   
     from controller.menu import Menu
     app.register_blueprint(Menu)    
+    from controller.login import loginP
+    app.register_blueprint(loginP)  
+
+    app.config['SECRET_KEY'] = os.urandom(24)  # 設置密鑰，用於session加密
 
     return app

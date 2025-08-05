@@ -1,0 +1,108 @@
+
+.main_contain {
+    min-height: 950px;
+    width: 90%;
+    max-width: 1200px;
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+hr{
+    width: 100%;
+    height: 2px;
+    border: none;
+    background-color: white;
+}
+
+.search_keyword {
+    padding: 0 0.5rem;
+    font-size: 20px;
+    width: 80%;
+    p {
+        margin: 0.2rem 1rem;
+    }
+}
+
+/* 搜索結果 */
+
+
+.search_novel_box {
+    max-width: 1500px;
+    flex: 1;
+    ul {
+        list-style: none;
+        margin: 0 1rem;
+        padding: 0;
+
+        display: flex;
+        justify-content: center;
+
+        li {
+            background: var(--main-inside-bg-color);
+            margin: 20px 0;
+            width: 95%;
+
+            div{
+                padding: 0.5rem;
+                }
+
+            h3{
+                margin: 0.2rem 1rem;
+                font-size: 1.5rem;
+                }
+            .novel_type{
+                display: flex;
+                }
+            
+            .novel_type p{
+                margin: 0.2rem 1rem;
+                font-size: 1rem;
+                }
+        }
+    }
+}
+
+.novel_info{
+    margin: 0.2rem 1rem;
+    /* 超出拉條 */
+    overflow: auto;
+    /* 文字超出隱藏 */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* 顯示5行 */
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+}
+
+
+
+/* 分頁 */
+.ranking_pages ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+
+    li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            text-decoration: none;
+            color: var(--main-font-color);
+            padding: 8px 16px;
+            border-radius: 5px;
+            margin: 0 5px;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.ranking_pages ul li :hover{
+    background: white;
+}

@@ -1,0 +1,249 @@
+
+.main_contain {
+    min-height: 950px;
+    max-width: 1200px;
+    width: 90%;
+    background-color:white;
+    flex-direction: column;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+/* 左框 */
+.detail_left{
+    min-width: 600px;
+    max-width: 70%;
+    height: auto;
+}
+/* 小說詳情 */
+.detail_novel{
+    background: #ece8e8;
+
+    h4 {
+        font-size: 1rem;
+        margin-bottom: 0;
+        border-bottom: 1px solid rgb(149, 142, 142);
+        display: flex;
+        a {
+            text-decoration:none;
+            color: var(--main-font-color);
+        }
+    }
+
+    h3 {
+        margin: 0.5rem 1rem;
+        font-size: 2rem;
+    }
+
+    p {
+        margin:0.2rem;
+        margin-left: 2rem;
+    }
+
+    .addbutton{
+        justify-content: space-around;
+        display: flex;
+
+        a {
+            border-radius: 15px;
+            padding: 5px;
+            font-size: 1.3rem;
+            margin: 3px 30px 10px 30px;
+            background: var(--main-bg-color);
+            text-decoration:none;
+            color: white;
+        }
+    }
+}
+
+
+/* 小說目錄 */
+.detail_menu{
+    background: #ece8e8;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    h3 {
+        margin: 1rem;
+        padding: 0;
+        text-align: center;
+        align-items: center;
+        font-size: 1.5rem;
+        border-bottom: 1px solid black;
+    }
+
+    a {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+        margin: 10px;
+        text-decoration:none;
+        color: black;
+        border-bottom: 1px solid rgb(220, 215, 215);
+    }
+
+
+    .addbutton{
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        a {
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            background: var(--main-bg-color);
+            text-decoration:none;
+            color: white;
+        }
+    }
+}
+
+
+/* 右框 */
+/* 小說推薦 */
+.detail_hot{
+    background: #ece8e8;
+    min-width: 400px;
+    max-width: 20%;    
+    margin-top: 1.2rem;
+    height: auto;
+}
+
+/* 頁籤 */
+.ranking_control {
+    /* position: absolute; */
+    opacity:0;
+}
+
+.tag_group{
+    text-align: center;
+    label {
+        display: inline-block;
+        /* position: relative; */
+        padding: 10px 30px;
+        border-bottom: none;
+        bottom: -1px;
+    }
+}
+
+.content_group{
+    padding: 20px
+}
+
+.content {
+    display: none;
+    flex-direction: column;
+    a {
+        font-size: 1.2rem;
+        padding: 5px;
+        margin: 10px;
+        text-decoration:none;
+        color: black;
+        border-bottom: 1px solid rgb(220, 215, 215);
+    }
+}
+
+#ranking1:checked ~ .tag_group [for="ranking1"],
+#ranking2:checked ~ .tag_group [for="ranking2"] { 
+    border-bottom: 2px solid rgb(85, 72, 233);
+}
+
+
+#ranking1:checked ~ .content_group .content1,
+#ranking2:checked ~ .content_group .content2 { 
+    display: flex;
+}
+
+
+/* 下框 */
+/* 留言區 */
+.detail_message{
+    margin: 1rem 20px;
+    padding-left: 20px;
+    width: 800px;
+    background: #ece8e8;
+}
+
+.user_comment{
+    display: flex;
+    margin-bottom: 1rem;
+    background: rgb(162, 156, 227);
+    flex-direction: column;
+
+    .main_floor {
+        margin: 10px 1rem;
+        .re_username {
+            font-weight: bold;
+            margin-left: 10px;
+            font-size: 1.3rem;
+        }
+        .re_comment {
+            margin-left: 60px;
+            font-size: 1.2rem;
+        }
+
+        form {
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            margin-top: 1rem;
+
+            input[type='text'] {
+                width: 90%;
+                padding: 5px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+            }
+        }
+    }
+
+    .reply_box {
+        align-items: center;
+        margin: 10px 40px 30px 40px;
+
+        .re_username {
+            font-weight: bold;
+            margin-left: 10px;
+            font-size: 1.3rem;
+        }
+        .comment {
+            margin-left: 60px;
+            font-size: 1.2rem;
+        }
+
+    }
+
+    > form {
+        display:grid ;
+        margin: 1rem 10px;
+
+        input[type='text'] {
+            height: 4rem;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100px;
+            height: 2rem;
+            margin-top: 10px;
+            margin-left: 85%;
+            background-color: var(--main-bg-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+
+}
+

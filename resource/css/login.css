@@ -1,0 +1,146 @@
+.main_contain {
+    min-height: 950px;
+    max-width: 1200px;
+    width: 90%;
+    background-color:white;
+    flex-direction: column;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+.inside_box{
+    background: #ece8e8;
+    width: 600px;    
+    margin: 1.2rem 0;
+    height: auto;
+}
+
+/* 頁籤 */
+.enter_control {
+    /*  消掉點選框 */
+    opacity:0;
+}
+
+.tag_group{
+    text-align: center;
+    label {
+        display: inline-block;
+        padding: 10px 30px;
+        border-bottom: none;
+    }
+}
+
+.loggin_group{
+    padding: 20px;
+    justify-items: center;
+}
+
+.content {
+    padding: 10px;
+    border-radius: 0 20px 20px 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    form {
+        width: 400px;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        div {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        label {
+            flex-shrink: 0;
+            vertical-align:middle;
+            width: 50px;
+            fill: rgb(16, 16, 159);
+            color: rgb(16, 16, 159);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;            
+        }
+
+        input {
+            vertical-align:middle;
+            flex-grow: 1;
+            /* min-width: 0; */
+            height: 40px;
+            padding: 1rem;
+            font: inherit;
+            border-radius: 0 10px 10px 0;
+            border: 2px solid white;
+            border-left: none;
+            background: white;
+            transition: 150ms ease;
+        }
+
+        input:hover {
+            border-color: rgb(61, 7, 168);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: rgb(61, 7, 168);
+        }
+
+        button {
+            margin-top: 10px;
+            background-color: rgb(193, 193, 226);
+            color: rgb(116, 116, 240);
+            cursor: pointer;
+            font: inherit;
+            font-weight: 600;
+            padding: .85em 4em;
+            border: none;
+            border-radius: 1000px;
+        }
+
+        button:hover {
+            background: var(--text-color);
+        }
+    }
+}
+
+
+#door1:checked ~ .tag_group [for="door1"],
+#door2:checked ~ .tag_group [for="door2"] { 
+    border-bottom: 2px solid rgb(85, 72, 233);
+}
+
+
+#door1:checked ~ .loggin_group .content1,
+#door2:checked ~ .loggin_group .content2 { 
+    display: flex;
+}
+
+/* 圖標顏色變換 */
+div:has(input:focus)>label {
+    background: whitesmoke;
+}
+
+/* 錯誤處理 */
+.incorrect label{
+    background-color: red;
+}
+form div .incorrect input{
+    border-color: red;
+}
+
+#error-message{
+    color: red;
+}

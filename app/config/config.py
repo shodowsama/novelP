@@ -9,7 +9,6 @@ class Config(object):
                     '4':'都市小说', '5':'修真武侠', '6':'言情小说', '7':'科幻空间'}
 
 
-
 # 開發環境配置
 class DevelopmentConfig(Config):
     log_level = 'DEBUG'

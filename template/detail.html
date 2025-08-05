@@ -2,6 +2,8 @@
 
 {% block css_file %}
     <link rel="stylesheet" href="/css/detail.css">  
+    <script type="text/javascript" src="/js/detail.js" defer> </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 {% endblock %}
 
 {% block title %} 小說詳情 {% endblock %}
@@ -29,7 +31,11 @@
 
             <div class="addbutton">
                 <a href="#">開始閱讀</a>
-                <a href="#">加入書架</a>
+                {% if is_favorite == 0 %}
+                    <a href="#" onclick="favorite( {{resultD.book_id}} ,1 )">加入書架</a>
+                {% else %}
+                    <a href="#" onclick="favorite( {{resultD.book_id}} ,0 )">已加入書架</a>
+                {% endif %}
             </div>
         </div>
 
@@ -58,61 +64,69 @@
         </div>
         <div class="content_group">
             <div class="content content1">
-                <a href="#">
-                    <span>熱門小說1</span>
-                </a>
-                <a href="#">
-                    <span>熱門小說2</span>
-                </a>
-                <a href="#">
-                    <span>熱門小說3</span>
-                </a>
-                <a href="#">
-                    <span>熱門小說4</span>
-                </a>
+                {% for name in result_hot %}
+                    <a href="/detail?book_id={{name[0].book_id}}">
+                        <span>{{name.book_name}}</span>
+                    </a>
+                {% endfor %}
+            </div>
 
-            </div>
             <div class="content content2">
-                <a href="#">
-                    <span>連載小說1</span>
-                </a>
-                <a href="#">
-                    <span>連載小說2</span>
-                </a>
-                <a href="#">
-                    <span>連載小說3</span>
-                </a>
-                <a href="#">
-                    <span>連載小說4</span>
-                </a>
+                {% for name in result_online %}
+                    <a href="/detail?book_id={{name.book_id}}">
+                        <span>{{name.book_name}}</span>
+                    </a>
+                {% endfor %}
             </div>
+
         </div>
     </div>
 
     <div class="detail_message">
         <h3> 留言區</h3>
         <hr>
-        <div class="user_comment">
-            <div class="head_img">
-                <span>頭像</span>
-            </div>
-            <div class="comment">
-                <p>username</p>
-                <p>你好</p>
-                <div class="re_comment">
-                    <input type="button" value="回覆">
-                </div>
-            </div>
-        </div>
 
         <div class="user_comment">
-            <div class="head_img">
-                <span>頭像</span>
+            {% for floors in result_reply %}            
+            <div class="floor">
+                <!-- 主樓 -->
+                <div class="main_floor">
+                    <div class="re_username">
+                        <span>{{floors.floor.username}}</span>
+                    </div>
+                    <div class="re_comment">
+                        <span>{{floors.floor.content}}</span>  
+                    </div>
+
+                    <form action="/post/reply" method="post">
+                        <input type="text" name="{{floors.floor.book_id}}_{{floors.floor.floor_number}}">
+                        <button type="submit">回覆</button>
+                    </form>
+                </div>
+                <hr>
+
+                <!-- 回覆 -->
+                {% for reply in floors.floor_reply%}
+                <div class="reply_box">
+                    <div class="re_username">
+                        <span>{{reply.username}}</span>
+                    </div>
+                    <div class="comment"> 
+                        <span>{{reply.content}}</span>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            <input type="text">
+            {% endfor %}
+
+            <form action="/post/reply" method="post">
+                <input type="text" name="{{resultD.book_id}}_0">
+                <button type="submit">留言</button>
+            </form>
         </div>
 
     </div>
+
 </div>
 
 {% endblock %}

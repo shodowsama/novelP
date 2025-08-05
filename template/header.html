@@ -32,11 +32,18 @@
                 <div class="nav_list">
                     <ul>
                         <li class="nav_list_link"><a href = "/ranking"> 小說排行        </a></li>
-                        <li class="nav_list_link"><a href = # >         閱讀紀錄    </a></li>
-                        <li class="nav_list_link"><a href = # >         書架        </a></li>
-                        <li class="nav_list_link person_order"><a href = # >
+                        <li class="nav_list_link"><a href = "/bookshelf" >   書架        </a></li>
+                        {% if session.get('is_login')== true %}
+                        <li class="nav_list_link person_order">
+                            <a href = "/logout" >
+                                <span>登出</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav_list_link person_order"><a href = "/login" >
                             <span class="material-symbols-outlined person_icon">account_circle</span>
                         </a></li>
+                        {% endif %}
                     </ul>
 
                 </div>

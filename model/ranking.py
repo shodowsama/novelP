@@ -57,3 +57,12 @@ class Ranking(base):
             ).offset(per_count).limit(config[env].page_count).all()    
 
         return result
+    
+    def find_novel_online(self):
+        result = dbsession.query(Ranking).filter(
+            Ranking.book_status == '连载',
+        ).order_by(
+            Ranking.id.desc()
+        ).all()
+
+        return result
